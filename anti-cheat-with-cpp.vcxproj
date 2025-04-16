@@ -105,7 +105,8 @@
       <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <LanguageStandard>stdcpp20</LanguageStandard>
-      <AdditionalIncludeDirectories>$(ProjectDir)third_party\abseil-cpp</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>
+      </AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -120,6 +121,9 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
+      <AdditionalIncludeDirectories>
+      </AdditionalIncludeDirectories>
+      <LanguageStandard>stdcpp20</LanguageStandard>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -131,20 +135,24 @@
   <ItemGroup>
     <ClCompile Include="app.cpp" />
     <ClCompile Include="commons\windows_common.cpp" />
-    <ClCompile Include="cui\manager.cpp" />
+    <ClCompile Include="cui\cui_manager.cpp" />
     <ClCompile Include="main.cpp" />
-    <ClCompile Include="runtime\manager.cpp" />
-    <ClCompile Include="third_party\abseil-cpp\absl\status\status.cc" />
+    <ClCompile Include="runtime\runtime_factory.cpp" />
+    <ClCompile Include="runtime\runtime_manager.cpp" />
+    <ClCompile Include="runtime\launcher.cpp" />
+    <ClCompile Include="signatures\process_signature.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="app.h" />
     <ClInclude Include="commons\windows_common.h" />
-    <ClInclude Include="cui\manager.h" />
-    <ClInclude Include="error.h" />
-    <ClInclude Include="runtime\error.h" />
-    <ClInclude Include="runtime\interface.h" />
-    <ClInclude Include="runtime\manager.h" />
-    <ClInclude Include="runtime\windows.h" />
+    <ClInclude Include="cui\cui_manager.h" />
+    <ClInclude Include="ruleset\signature_set.h" />
+    <ClInclude Include="runtime\runtime_factory.h" />
+    <ClInclude Include="runtime\runtime_interface.h" />
+    <ClInclude Include="runtime\runtime_manager.h" />
+    <ClInclude Include="runtime\launcher.h" />
+    <ClInclude Include="signatures\process_signature.h" />
+    <ClInclude Include="signatures\signature_interface.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

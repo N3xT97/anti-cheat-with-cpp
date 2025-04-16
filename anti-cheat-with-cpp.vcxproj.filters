@@ -21,42 +21,54 @@
     <ClCompile Include="app.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
-    <ClCompile Include="runtime\manager.cpp">
+    <ClCompile Include="runtime\runtime_manager.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
-    <ClCompile Include="cui\manager.cpp">
+    <ClCompile Include="cui\cui_manager.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
     <ClCompile Include="commons\windows_common.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
-    <ClCompile Include="third_party\abseil-cpp\absl\status\status.cc">
+    <ClCompile Include="runtime\launcher.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="runtime\runtime_factory.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="signatures\process_signature.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="error.h">
-      <Filter>헤더 파일</Filter>
-    </ClInclude>
     <ClInclude Include="app.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
-    <ClInclude Include="runtime\error.h">
+    <ClInclude Include="runtime\runtime_interface.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
-    <ClInclude Include="runtime\interface.h">
+    <ClInclude Include="runtime\runtime_manager.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
-    <ClInclude Include="runtime\manager.h">
+    <ClInclude Include="runtime\launcher.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
-    <ClInclude Include="runtime\windows.h">
-      <Filter>헤더 파일</Filter>
-    </ClInclude>
-    <ClInclude Include="cui\manager.h">
+    <ClInclude Include="cui\cui_manager.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
     <ClInclude Include="commons\windows_common.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="runtime\runtime_factory.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="signatures\process_signature.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="signatures\signature_interface.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="ruleset\signature_set.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
   </ItemGroup>

@@ -1,0 +1,2 @@
+C:\Users\jt970\OneDrive\Programing\Anti-Cheat\anti-cheat-with-cpp\x64\Debug\abseil_dll.dll
+C:\Users\jt970\OneDrive\Programing\Anti-Cheat\anti-cheat-with-cpp\anti-che.e189a2ae\x64\Debug\anti-che.59F178AA.Up2Date

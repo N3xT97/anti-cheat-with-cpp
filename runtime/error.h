@@ -1,4 +1,0 @@
-#pragma
-
-enum class RuntimeError {
-};
