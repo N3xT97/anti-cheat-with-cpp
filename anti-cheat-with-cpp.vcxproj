@@ -137,6 +137,7 @@
     <ClCompile Include="commons\windows_common.cpp" />
     <ClCompile Include="cui\cui_manager.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="ruleset\signature_set.cpp" />
     <ClCompile Include="runtime\runtime_factory.cpp" />
     <ClCompile Include="runtime\runtime_manager.cpp" />
     <ClCompile Include="runtime\launcher.cpp" />

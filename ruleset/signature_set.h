@@ -1,6 +1,7 @@
 #pragma once
 
 #include "../signatures/signature_interface.h"
+#include "../signatures/process_signature.h"
 #include <absl/status/status.h>
 #include <unordered_map>
 #include <string>
@@ -18,5 +19,7 @@ public:
 
 	void insert(T& signature);
 	absl::Status set_from_json(std::string& path);
-	std::optional search_all(T& signature);
+	std::optional<std::vector<T>> search_all(T& signature);
 };
+
+

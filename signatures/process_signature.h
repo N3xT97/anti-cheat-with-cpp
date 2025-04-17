@@ -9,5 +9,5 @@ public:
 	
 	std::unique_ptr<Signature> normalize() const override;
 	std::vector<std::tuple<std::string, std::optional<std::string>>> field_values() override;
-	void normalize();
+	void normalize_self();
 };

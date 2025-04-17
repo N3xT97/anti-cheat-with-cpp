@@ -1,4 +1,6 @@
-﻿  runtime_factory.cpp
-  anti-cheat-with-cpp.vcxproj -> C:\Users\jt970\OneDrive\Programing\Anti-Cheat\anti-cheat-with-cpp\x64\Debug\anti-cheat-with-cpp.exe
-  'pwsh.exe'은(는) 내부 또는 외부 명령, 실행할 수 있는 프로그램, 또는
-  배치 파일이 아닙니다.
+﻿  signature_set.cpp
+  runtime_factory.cpp
+C:\Users\jt970\OneDrive\Programing\Anti-Cheat\anti-cheat-with-cpp\ruleset\signature_set.cpp(42,2): error C2760: 구문 오류: 여기서 '}'은(는) 예상치 못한 오류였습니다. 예상된 오류는 ';'였습니다
+C:\Users\jt970\OneDrive\Programing\Anti-Cheat\anti-cheat-with-cpp\ruleset\signature_set.cpp(60,3): error C2760: 구문 오류: 여기서 '}'은(는) 예상치 못한 오류였습니다. 예상된 오류는 ';'였습니다
+  process_signature.cpp
+  코드를 생성하고 있습니다...

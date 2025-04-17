@@ -19,7 +19,7 @@ vector<tuple<string, optional<string>>> ProcessSignature::field_values()
     return field_values;
 }
 
-void ProcessSignature::normalize()
+void ProcessSignature::normalize_self()
 {
     if (this->name.has_value()) {
         std::string& n = this->name.value();
