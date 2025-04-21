@@ -9,7 +9,10 @@ using namespace std;
 void build_process_blastlist()
 {
 	SignatureSet<ProcessSignature> process_blacklist;
-	process_blacklist.set_from_json("assets/process_blacklist.json");
+	auto result = process_blacklist.set_from_json("assets/process_blacklist.json");
+	if (!result.ok()) {
+		return;
+	}
 	for (const auto& item : process_blacklist.signatures) {
 		cout << item.name.value_or("None") << endl;
 	}

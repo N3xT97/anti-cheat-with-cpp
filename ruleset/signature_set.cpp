@@ -50,15 +50,9 @@ absl::Status SignatureSet<T>::set_from_json(const string& path)
 	this->field_index.clear();
 
 	for (const auto& item : j) {
-		T sig;
-		try {
-			sig = item.get<T>();
-		}
-		catch (const nlohmann::json::type_error& e) {
-			string msg = absl::StrFormat("Error(json): %s", e.what());
-			return absl::UnknownError(msg);
-		};
-		this->insert(sig);
+		std::unique_ptr<Signature> sig = T::from_json(item);
+		ProcessSignature* typed_ptr = dynamic_cast<ProcessSignature*>(sig.get());
+		this->insert(*typed_ptr);
 	}
 	return absl::OkStatus();
 }
