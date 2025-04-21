@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup Label="ProjectConfigurations">
     <ProjectConfiguration Include="Debug|Win32">
@@ -137,6 +137,7 @@
     <ClCompile Include="commons\windows_common.cpp" />
     <ClCompile Include="cui\cui_manager.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="monitor\monitor_factory.cpp" />
     <ClCompile Include="ruleset\signature_set.cpp" />
     <ClCompile Include="runtime\runtime_factory.cpp" />
     <ClCompile Include="runtime\runtime_manager.cpp" />
@@ -147,6 +148,7 @@
     <ClInclude Include="app.h" />
     <ClInclude Include="commons\windows_common.h" />
     <ClInclude Include="cui\cui_manager.h" />
+    <ClInclude Include="monitor\monitor_factory.h" />
     <ClInclude Include="ruleset\signature_set.h" />
     <ClInclude Include="runtime\runtime_factory.h" />
     <ClInclude Include="runtime\runtime_interface.h" />
@@ -154,6 +156,9 @@
     <ClInclude Include="runtime\launcher.h" />
     <ClInclude Include="signatures\process_signature.h" />
     <ClInclude Include="signatures\signature_interface.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="assets\process_blacklist.json" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

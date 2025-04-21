@@ -1,6 +1,8 @@
 #pragma once
 
 #include <string>
+#include <nlohmann/json.hpp>
+#include <optional>
 #include "signature_interface.h"
 
 class ProcessSignature : public Signature {

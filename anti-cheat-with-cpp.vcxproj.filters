@@ -75,4 +75,7 @@
       <Filter>헤더 파일</Filter>
     </ClInclude>
   </ItemGroup>
+  <ItemGroup>
+    <None Include="assets\process_blacklist.json" />
+  </ItemGroup>
 </Project>

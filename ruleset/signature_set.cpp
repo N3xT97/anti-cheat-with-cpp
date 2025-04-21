@@ -1,6 +1,8 @@
 #include "signature_set.h"
+#include "../signatures/process_signature.h"
 #include <nlohmann/json.hpp>
 #include <absl/strings/str_format.h>
+#include <fstream>
 
 using namespace std;
 
@@ -20,11 +22,9 @@ void SignatureSet<T>::insert(T& signature)
 	this->signatures.push_back(move(signature));
 }
 
-NLOHMANN_DEFINE_TYPE_NON_INTRUSIVE(ProcessSignature, name)
-
 template<typename T>
 requires derived_from<T, Signature>
-absl::Status SignatureSet<T>::set_from_json(string& path)
+absl::Status SignatureSet<T>::set_from_json(const string& path)
 {
 	ifstream input(path);
 	if (!input.is_open()) {
@@ -38,7 +38,7 @@ absl::Status SignatureSet<T>::set_from_json(string& path)
 	}
 	catch (const nlohmann::json::type_error& e) {
 		string msg = absl::StrFormat("Error(json): %s", e.what());
-		return absl::UnknownError(msg)
+		return absl::UnknownError(msg);
 	}
 
 	if (!j.is_array()) {
@@ -56,8 +56,8 @@ absl::Status SignatureSet<T>::set_from_json(string& path)
 		}
 		catch (const nlohmann::json::type_error& e) {
 			string msg = absl::StrFormat("Error(json): %s", e.what());
-			return absl::UnknownError(msg)
-		}
+			return absl::UnknownError(msg);
+		};
 		this->insert(sig);
 	}
 	return absl::OkStatus();
@@ -84,3 +84,6 @@ optional<vector<T>> SignatureSet<T>::search_all(T& signature)
 	if (matches.empty()) return nullopt;
 	return matches;
 }
+
+
+template class SignatureSet<ProcessSignature>;

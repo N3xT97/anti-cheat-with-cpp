@@ -4,6 +4,7 @@
 #include "app.h"
 #include "cui/cui_manager.h"
 #include "runtime/runtime_factory.h"
+#include "monitor/monitor_factory.h"
 
 using namespace std;
 
@@ -19,7 +20,7 @@ absl::Status run()
 		return result;
 	}
 
-
+	build_process_blastlist();
 	result = target.kill();
 	if (!result.ok()) {
 		return result;

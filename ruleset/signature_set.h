@@ -6,6 +6,7 @@
 #include <unordered_map>
 #include <string>
 #include <vector>
+#include <concepts>
 
 using FieldValueMap = std::unordered_map<std::string, std::vector<size_t>>;
 using FieldIndexMap = std::unordered_map<std::string, FieldValueMap>;
@@ -18,7 +19,7 @@ public:
 	FieldIndexMap field_index;
 
 	void insert(T& signature);
-	absl::Status set_from_json(std::string& path);
+	absl::Status set_from_json(const std::string& path);
 	std::optional<std::vector<T>> search_all(T& signature);
 };
 
