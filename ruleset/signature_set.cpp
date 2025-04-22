@@ -42,7 +42,7 @@ absl::Status SignatureSet<T>::set_from_json(const string& path)
 	}
 
 	if (!j.is_array()) {
-		string msg = absl::StrFormat("Error(): %s", "is_array");
+		string msg = absl::StrFormat("Error(json): %s", "is_array");
 		return absl::UnknownError(msg);
 	}
 
