@@ -1,19 +1,12 @@
 #include "monitor_factory.h"
 #include "../ruleset/signature_set.h"
-#include "../signatures/process_signature.h"
-#include <string>
-#include <iostream>
+#include "../monitor/process_montitor/process_scanner.h"
+#include "../monitor/process_montitor/process_monitor.h"
 
 using namespace std;
 
-void build_process_blastlist()
+absl::StatusOr<ProcessMonitor> build_process_monitor()
 {
-	SignatureSet<ProcessSignature> process_blacklist;
-	auto result = process_blacklist.set_from_json("assets/process_blacklist.json");
-	if (!result.ok()) {
-		return;
-	}
-	for (const auto& item : process_blacklist.signatures) {
-		cout << item.name.value_or("None") << endl;
-	}
+	unique_ptr<Scanner<ProcessInfo>> scanner = make_unique<Scanner<ProcessInfo>>(ProcessScanner{});
+	return ProcessMonitor(move(scanner));
 }

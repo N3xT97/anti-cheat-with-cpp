@@ -138,6 +138,7 @@
     <ClCompile Include="cui\cui_manager.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="monitor\monitor_factory.cpp" />
+    <ClCompile Include="monitor\process_montitor\process_monitor.cpp" />
     <ClCompile Include="monitor\process_montitor\process_scanner.cpp" />
     <ClCompile Include="ruleset\signature_set.cpp" />
     <ClCompile Include="runtime\runtime_factory.cpp" />
@@ -152,6 +153,7 @@
     <ClInclude Include="monitor\monitor_factory.h" />
     <ClInclude Include="monitor\monitor_interface.h" />
     <ClInclude Include="monitor\process_montitor\process_info.h" />
+    <ClInclude Include="monitor\process_montitor\process_monitor.h" />
     <ClInclude Include="monitor\process_montitor\process_scanner.h" />
     <ClInclude Include="ruleset\signature_set.h" />
     <ClInclude Include="runtime\runtime_factory.h" />

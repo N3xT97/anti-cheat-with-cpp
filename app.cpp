@@ -16,11 +16,14 @@ absl::Status run()
 	string target_path = "C:\\Windows\\System32\\notepad.exe";
 	RuntimeManager target = build_runtime_manager(target_path);
 	absl::Status result = target.launch();
-	if (!result.ok()) {
-		return result;
-	}
+	if (!result.ok()) return result;
 
-	build_process_blastlist();
+	auto process_monitor = build_process_monitor();
+	if (!process_monitor.ok()) return process_monitor.status();
+
+	result = process_monitor.value().run_once();
+	if (!result.ok()) return result;
+
 	result = target.kill();
 	if (!result.ok()) {
 		return result;
