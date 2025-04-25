@@ -3,8 +3,8 @@
 
 using namespace std;
 
-ProcessMonitor::ProcessMonitor(unique_ptr<Scanner<ProcessInfo>> scanner)
-    : scanner(move(scanner)), snapshot({}) {}
+ProcessMonitor::ProcessMonitor(unique_ptr<Scanner<ProcessInfo>> scanner, unique_ptr<Matcher<ProcessSignature, ProcessInfo>> matcher)
+    : scanner(move(scanner)), matcher(move(matcher)), snapshot({}) { }
 
 absl::Status ProcessMonitor::scan()
 {
@@ -13,23 +13,31 @@ absl::Status ProcessMonitor::scan()
         return scanned.status();
     }
     this->snapshot = scanned.value();
-    return absl::Status();
+    return absl::OkStatus();
 }
 
 bool ProcessMonitor::check()
 {
+    auto result = this->scan();
+	if (!result.ok()) {
+		return false;
+	}
+    auto matches = this->matcher.get()->match_all(this->snapshot);
+	if (!matches.has_value()) {
+		return false;
+	}
+	for (const auto& match : matches.value()) {
+		cout << "Match found: " << match.first.name.value() << endl;
+	}
     return false;
 }
 
-absl::Status ProcessMonitor::run_once()
+absl::StatusOr<bool> ProcessMonitor::run_once()
 {
-    auto result = this->scan();
-    if (!result.ok()) {
-        return result;
+    auto scan_result = this->scan();
+    if (!scan_result.ok()) {
+        return scan_result;
     }
-    for (const auto& info : this->snapshot) {
-        if (!info.name.has_value()) continue;
-        wcout << info.name.value() << endl;
-    }
-    return absl::Status();
+	auto check_result = this->check();
+	return check_result;
 }

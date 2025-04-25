@@ -8,7 +8,7 @@ public:
 	virtual ~Monitor() = default;
 	virtual absl::Status scan() = 0;
 	virtual bool check() = 0;
-	virtual absl::Status run_once() = 0;
+	virtual absl::StatusOr<bool> run_once() = 0;
 };
 
 template<typename T>
@@ -24,5 +24,5 @@ public:
 	virtual ~Matcher() = default;
 	virtual T convert(const U& item) = 0;
 	virtual bool is_match(const T& signature, const U& item) = 0;
-	virtual std::optional<std::vector<std::pair<T, U>>> match_all() = 0;
+	virtual std::optional<std::vector<std::pair<T, U>>> match_all(std::vector<U>& items) = 0;
 };

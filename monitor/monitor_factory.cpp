@@ -8,5 +8,6 @@ using namespace std;
 absl::StatusOr<ProcessMonitor> build_process_monitor()
 {
 	unique_ptr<Scanner<ProcessInfo>> scanner = make_unique<Scanner<ProcessInfo>>(ProcessScanner{});
+
 	return ProcessMonitor(move(scanner));
 }
