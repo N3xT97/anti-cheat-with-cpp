@@ -5,6 +5,12 @@
 
 using namespace std;
 
+WindowsHandle create_process_snapshot() {
+	HANDLE snapshot_handle = CreateToolhelp32Snapshot(TH32CS_SNAPPROCESS, 0);
+	WindowsHandle h(snapshot_handle);
+	return h;
+}
+
 absl::StatusOr<std::vector<ProcessInfo>> ProcessScanner::scan()
 {
 	WindowsHandle snapshot_handle = create_process_snapshot();
@@ -32,8 +38,3 @@ ProcessInfo ProcessScanner::convert(const PROCESSENTRY32W& pe32)
 	return info;
 }
 
-WindowsHandle create_process_snapshot() {
-	HANDLE snapshot_handle = CreateToolhelp32Snapshot(TH32CS_SNAPPROCESS, 0);
-	WindowsHandle h(snapshot_handle);
-	return h;
-}

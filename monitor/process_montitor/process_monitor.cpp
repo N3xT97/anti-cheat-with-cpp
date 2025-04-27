@@ -3,7 +3,7 @@
 
 using namespace std;
 
-ProcessMonitor::ProcessMonitor(unique_ptr<Scanner<ProcessInfo>> scanner, unique_ptr<Matcher<ProcessSignature, ProcessInfo>> matcher)
+ProcessMonitor::ProcessMonitor(unique_ptr<IScanner<ProcessInfo>> scanner, unique_ptr<IMatcher<ProcessSignature, ProcessInfo>> matcher)
     : scanner(move(scanner)), matcher(move(matcher)), snapshot({}) { }
 
 absl::Status ProcessMonitor::scan()
@@ -29,7 +29,7 @@ bool ProcessMonitor::check()
 	for (const auto& match : matches.value()) {
 		cout << "Match found: " << match.first.name.value() << endl;
 	}
-    return false;
+    return true;
 }
 
 absl::StatusOr<bool> ProcessMonitor::run_once()

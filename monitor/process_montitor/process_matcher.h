@@ -7,10 +7,11 @@
 #include <optional>
 #include <vector>
 
-class ProcessMatcher : public Matcher<ProcessSignature, ProcessInfo> {
+class ProcessMatcher : public IMatcher<ProcessSignature, ProcessInfo> {
 	SignatureSet<ProcessSignature> blacklist;
 public:
+	ProcessMatcher(SignatureSet<ProcessSignature>& blacklist);
 	ProcessSignature convert(const ProcessInfo& item) override;
-	bool is_match(const ProcessSignature& signature, const ProcessInfo& item) override;
+	bool is_match(const ProcessSignature& signature, const ProcessSignature& input) override;
 	std::optional<std::vector<std::pair<ProcessSignature, ProcessInfo>>> match_all(std::vector<ProcessInfo>& items) override;
 };

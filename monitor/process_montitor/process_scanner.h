@@ -4,7 +4,7 @@
 #include "process_info.h"
 #include <TlHelp32.h>
 
-class ProcessScanner : public Scanner<ProcessInfo> {
+class ProcessScanner : public IScanner<ProcessInfo> {
 public:
 	virtual absl::StatusOr<std::vector<ProcessInfo>> scan() override;
 	static ProcessInfo convert(const PROCESSENTRY32W& pe32);
