@@ -1,0 +1,9 @@
+{
+    "cmake.cmakePath": "C:/Program Files/CMake/bin/cmake.exe", // CMake 경로
+    "cmake.generator": "Ninja", // Ninja 빌드 시스템 사용
+    "cmake.buildDirectory": "${workspaceFolder}/build", // 빌드 디렉토리 설정
+    "cmake.toolchain": "${workspaceFolder}/.vscode/toolchain.cmake",
+    "files.associations": {
+        "exception": "cpp"
+    }, // 도구 체인 설정
+}
