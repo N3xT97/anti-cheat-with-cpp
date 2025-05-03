@@ -1,7 +1,5 @@
-#ifndef ANTI_CHEAT_PLATFROM_WINDOWS_PROCESS_CONTROLLER_H
-#define ANTI_CHEAT_PLATFROM_WINDOWS_PROCESS_CONTROLLER_H
-
-#include <Windows.h>
+#ifndef ANTI_CHEAT_PLATFORM_WINDOWS_PROCESS_CONTROLLER_H
+#define ANTI_CHEAT_PLATFORM_WINDOWS_PROCESS_CONTROLLER_H
 
 #include "platform/windows/common/handle_wrapper.h"
 #include "target/controller.h"
@@ -26,13 +24,12 @@ class Controller final : public target::IController {
   absl::Status terminate() override;
 
  private:
+  absl::StatusOr<std::reference_wrapper<const common::WindowsHandle>> get_target_handle(
+      const std::string& called_func_name) const;
+
+  std::optional<common::WindowsHandle> handle_opt_ = std::nullopt;
   std::string path_;
-  struct HandleCloser {
-    void operator()(HANDLE h) const { ::CloseHandle(h); }
-  };
-  std::optional<common::HandleWrapper<HANDLE, HandleCloser>> handle_opt_ =
-      std::nullopt;
 };
 }  // namespace platform::windows::process
 
-#endif  // ANTI_CHEAT_PLATFROM_WINDOWS_PROCESS_CONTROLLER_H
+#endif  // ANTI_CHEAT_PLATFORM_WINDOWS_PROCESS_CONTROLLER_H

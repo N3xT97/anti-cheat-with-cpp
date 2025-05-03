@@ -52,6 +52,7 @@ absl::Status Manager::main_loop() {
   if (is_target_running) {
     RETURN_IF_ERROR(target_manager.terminate());
   }
+  spdlog::info("Target '{}' terminated", target_path);
   return absl::OkStatus();
 }
 }  // namespace app

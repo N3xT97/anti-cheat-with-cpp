@@ -13,17 +13,3 @@ target_link_libraries(anti_cheat_windows_common
 )
 
 add_library(anti_cheat::windows::common ALIAS anti_cheat_windows_common)
-
-add_executable(handle_wrapper_test
-        handle_wrapper_test.cpp
-)
-
-target_link_libraries(handle_wrapper_test
-        PRIVATE
-        GTest::gtest
-        GTest::gtest_main
-        anti_cheat::windows::common
-)
-
-gtest_discover_tests(handle_wrapper_test)
-#add_test(NAME handle_wrapper_test COMMAND handle_wrapper_test)

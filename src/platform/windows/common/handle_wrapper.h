@@ -1,8 +1,9 @@
 #ifndef ANTI_CHEAT_PLATFORM_WINDOWS_COMMON_HANDLE_WRAPPER_H
 #define ANTI_CHEAT_PLATFORM_WINDOWS_COMMON_HANDLE_WRAPPER_H
 
-namespace platform::windows::common {
+#include <Windows.h>
 
+namespace platform::windows::common {
 template <typename HandleType, typename CloseFunc>
 class HandleWrapper final {
  public:
@@ -18,7 +19,8 @@ class HandleWrapper final {
   ~HandleWrapper();
 
   HandleType get() const;
-  [[nodiscard]] bool is_valid() const;
+  [[nodiscard]]
+  bool is_valid() const;
 
  private:
   void close();
@@ -26,6 +28,12 @@ class HandleWrapper final {
   HandleType raw_;
   CloseFunc close_func_;
 };
+
+struct HandleCloser {
+  void operator()(HANDLE h) const { ::CloseHandle(h); }
+};
+
+using WindowsHandle = HandleWrapper<HANDLE, HandleCloser>;
 }  // namespace platform::windows::common
 
 #include "handle_wrapper.inl"
