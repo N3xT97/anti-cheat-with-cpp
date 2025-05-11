@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 3.24)
-project(anti_cheat_with_cpp_cmake)
+project(anti_cheat_with_cpp)
 
 set(CMAKE_CXX_STANDARD 20)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
@@ -13,5 +13,6 @@ add_subdirectory(third_party/spdlog SYSTEM)
 add_subdirectory(src/common)
 add_subdirectory(src/platform)
 add_subdirectory(src/target)
+add_subdirectory(src/signature)
 add_subdirectory(src/app)
 add_subdirectory(src/main)

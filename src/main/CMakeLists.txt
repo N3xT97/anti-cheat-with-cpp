@@ -1,8 +1,8 @@
-add_executable(anti_cheat_with_cpp
+add_executable(anti_cheat
         main.cpp
 )
 
-target_link_libraries(anti_cheat_with_cpp
+target_link_libraries(anti_cheat
         PRIVATE
         spdlog::spdlog
         anti_cheat::common
